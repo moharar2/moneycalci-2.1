@@ -1,0 +1,10 @@
+# Namecheap / Apache shared hosting SPA fallback.
+# Serves index.html for any route that isn't a real file, so deep links
+# like /mortgage-calculator work on direct load and refresh.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule>
